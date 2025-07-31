@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Comment extends Model
 {
+    use HasFactory;
     public $fillable = [
         "comment_content",
         "comment_date",
@@ -16,7 +19,7 @@ class Comment extends Model
         "is_hidden",
     ];
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function post(): BelongsTo
     {

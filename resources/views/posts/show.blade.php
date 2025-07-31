@@ -22,6 +22,43 @@
 
         <div id="comments-section">
             <h2 class="text-2xl font-bold text-white mb-4">Comments</h2>
+
+            {{-- Comment Form for Authenticated Users --}}
+            @auth
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+                <h3 class="text-xl font-semibold text-white mb-4">Leave a Comment</h3>
+                <form action="{{ route('comments.store', $post) }}" method="POST">
+                    @csrf
+                    <div class="mb-4">
+                        <textarea
+                            name="comment_content"
+                            id="comment_content"
+                            rows="4"
+                            class="w-full bg-gray-700 text-gray-200 border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#e94560]"
+                            placeholder="Write your comment here..."
+                            required></textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        class="bg-[#e94560] hover:bg-[#c2364e] text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                        Submit Comment
+                    </button>
+                </form>
+            </div>
+            @endauth
+
+            {{-- Comments List will go here --}}
+            @forelse ($post->comments as $comment)
+                <div class="bg-gray-800 p-4 rounded-lg shadow mb-4">
+                    <div class="flex items-center mb-2">
+                        <p class="text-sm font-semibold text-white">{{ $comment->user->name }}</p>
+                        <p class="text-xs text-gray-500 ml-2">{{ $comment->created_at->diffForHumans() }}</p>
+                    </div>
+                    <p class="text-gray-300">{{ $comment->comment_content }}</p>
+                </div>
+            @empty
+                <p class="text-gray-500">No comments yet. Be the first to comment!</p>
+            @endforelse
         </div>
     </div>
 @endsection

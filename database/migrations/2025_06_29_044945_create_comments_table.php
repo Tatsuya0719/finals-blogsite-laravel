@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("post_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("user_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("parent_id")->nullable()->constrained("comments")->cascadeOnDelete();
             $table->text("comment_content")->comment("content of a comment.");
-            $table->timestamp("comment_date")->comment("date when comment was posted.");
-            $table->string("reviewer_name")->comment("name of the reviewer")->nullable();
-            $table->string("reviewer_email")->comment("email of the reviewer")->nullable();
-            $table->boolean("is_hidden")->comment("flag if post is hidden.")->default(false);
+            $table->timestamps();
         });
     }
 

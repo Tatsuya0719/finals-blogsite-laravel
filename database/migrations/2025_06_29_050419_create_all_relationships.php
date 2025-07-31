@@ -45,14 +45,14 @@ return new class extends Migration
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references("id")->on("users");
         });
-        Schema::table('comments', function (Blueprint $table) {
-            $table->unsignedBigInteger("post_id");
-            $table->unsignedBigInteger("user_id");
-            $table->unsignedBigInteger("parent_comment_id");
-            $table->foreign("post_id")->references("id")->on("posts");
-            $table->foreign("user_id")->references("id")->on("users");
-            $table->foreign("parent_comment_id")->references("id")->on("comments");
-        });
+        // Schema::table('comments', function (Blueprint $table) {
+        //     $table->unsignedBigInteger("post_id");
+        //     $table->unsignedBigInteger("user_id");
+        //     $table->unsignedBigInteger("parent_comment_id");
+        //     $table->foreign("post_id")->references("id")->on("posts");
+        //     $table->foreign("user_id")->references("id")->on("users");
+        //     $table->foreign("parent_comment_id")->references("id")->on("comments");
+        // });
         Schema::table('media', function (Blueprint $table) {
             $table->unsignedBigInteger("post_id");
             $table->foreign("post_id")->references("id")->on("posts");
