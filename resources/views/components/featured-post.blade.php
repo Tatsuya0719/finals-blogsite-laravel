@@ -1,3 +1,4 @@
+@if ($featuredPosts)
 <div class="bg-[#24263b] rounded-lg shadow-lg overflow-hidden md:flex"> {{-- Adjust background color --}}
     <div class="md:flex-shrink-0">
         <img class="h-full w-full object-cover md:w-96" src="{{$featuredPosts->featured_image_url}}"
@@ -9,3 +10,4 @@
         <a href="{{ route('posts.show', $featuredPosts->slug) }}" class="bg-[#e94560] hover:bg-[#c2364e] text-white font-bold py-2 px-4 rounded self-start inline-block">Read More</a>
     </div>
 </div>
+@endif
