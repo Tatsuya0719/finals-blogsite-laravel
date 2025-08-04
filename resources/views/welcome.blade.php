@@ -3,34 +3,44 @@
 @section('title', 'Welcome')
 
 @section('content')
-<div class="min-h-screen bg-[#24263b] flex flex-col items-center justify-center px-6 py-16 text-white">
-    {{-- Logo & Tagline --}}
-    <div class="text-center mb-12">
-        <img src="{{ asset('images/logo.png') }}" alt="Game Ako Logo" class="mx-auto w-24 h-24 mb-4">
-        <h1 class="text-4xl sm:text-5xl font-extrabold">Welcome to <span class="text-[#e94560]">Game Ako</span></h1>
-        <p class="mt-2 text-lg text-gray-300">#fortheloveofgaming — Where Gamers Share Stories</p>
-    </div>
+<div class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white px-6 py-16 overflow-hidden">
 
-    {{-- Action Buttons --}}
-    <div class="flex flex-col sm:flex-row gap-4 mb-10">
-        <a href="{{ route('login') }}"
-           class="bg-[#e94560] hover:bg-[#c2364e] px-6 py-3 rounded-lg text-lg font-bold text-white transition duration-200">
-            Login
-        </a>
-        <a href="{{ route('register') }}"
-           class="border border-[#e94560] hover:bg-[#e94560] px-6 py-3 rounded-lg text-lg font-bold text-white transition duration-200">
-            Register
-        </a>
-    </div>
+    {{-- Blue Glowing Background Orbs --}}
+    <div class="absolute w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl top-[-200px] left-[-200px] z-0"></div>
+    <div class="absolute w-[400px] h-[400px] bg-blue-700/10 rounded-full blur-2xl bottom-[-100px] right-[-100px] z-0"></div>
 
-    {{-- Preview / Call to Explore --}}
-    <div class="text-center max-w-2xl">
-        <h2 class="text-2xl font-semibold mb-2">Read the latest stories, reviews & walkthroughs</h2>
-        <p class="text-gray-400 mb-6">Jump into featured articles from gamers across the community. Want to share yours? Register and join the conversation.</p>
-        <a href="{{ route('welcome') }}"
-           class="text-[#e94560] hover:text-[#c2364e] font-semibold underline">
-            Browse Stories as Guest →
-        </a>
+    {{-- Main Content --}}
+    <div class="relative z-10 text-center max-w-3xl">
+        {{-- Logo --}}
+        <div class="mb-8">
+            <img src="{{ asset('images/logo.png') }}" alt="Game Ako Logo" class="mx-auto w-20 h-20 sm:w-24 sm:h-24">
+        </div>
+
+        {{-- Heading --}}
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
+            Welcome to <span class="text-blue-400">Game Ako</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-300 mb-8">#fortheloveofgaming — Explore. Play. Write. Share.</p>
+
+        {{-- Buttons --}}
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <a href="{{ route('login') }}"
+               class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-lg font-bold transition duration-200">
+                Login
+            </a>
+            <a href="{{ route('register') }}"
+               class="border border-blue-500 hover:bg-blue-600 hover:border-blue-600 px-6 py-3 rounded-lg text-lg font-bold transition duration-200">
+                Register
+            </a>
+        </div>
+
+        {{-- Guest link --}}
+        <p class="text-gray-400">
+            Just browsing?
+            <a href="{{ route('welcome') }}" class="text-blue-400 hover:text-blue-300 font-semibold underline ml-1">
+                View stories as guest →
+            </a>
+        </p>
     </div>
 </div>
 @endsection
